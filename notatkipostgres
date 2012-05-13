@@ -1,0 +1,29 @@
+#postgres on port 5432
+createdb soa
+psql -d soa
+
+http://jdbc.postgresql.org/download/postgresql-jdbc-9.1-901.src.tar.gz
+http://jdbc.postgresql.org/download.html
+wlsciwie dolaczyc jara juz zrobione w ConferenceEAR
+
+dodac usera soauser z haslem 'soa'
+create user soausear password 'soa';
+
+wypisuje userow
+z jakiej kolwiek bazy mozna sie zalogowa na psql cokolwiek_byle_istnialo -U moj_user
+select * from pg_user;
+
+gdy nie nie ddziala autentykacja !
+https://linuxdesk.wordpress.com/2008/10/10/ident-authentication-failed-for-user-postgresql/
+w skrocie:
+plik pg_hba.conf (u mnie w /etc/postgresql/9.1/main)
+zmienic linijke 
+local all all peer # zamiast peer moze byc cos innego
+na
+local all all md5 
+
+http://www.coderanch.com/t/487173/ORM/java/hibernate-sequence-does-not-exist
+ hibernate_sequence
+#to juz rozwiazane samo tworzy hibernate_squence 
+
+jezeli polaczenie z baza nie dziala i wypluwa wyjatek Unknown entity konieczne jest dodanie <class>entity.Person</class> w persistence.xml
