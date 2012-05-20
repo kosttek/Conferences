@@ -2,6 +2,7 @@ package uk.co.regdeveloper.webservice;
 
 
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +15,8 @@ import javax.persistence.Persistence;
 
 import org.apache.log4j.BasicConfigurator;
 
-import entity.Person;
+import test.Person;
+
 
 @Stateless
 @WebService(endpointInterface = "uk.co.regdeveloper.webservice.Echo")
@@ -31,9 +33,9 @@ public class EchoBean {
         
         private String dbtest(){
             Person p1 = new Person("Brett", 'L', "Schuchert", "Street1",
-                    "Street2", "City", "State", "Zip");
+                    "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
             Person p2 = new Person("FirstName"+new Random().nextInt(), 'K', "LastName",
-                    "Street1", "Street2", "City", "State", "Zip");
+                    "Street1", "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
             BasicConfigurator.configure();
      
             emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
@@ -43,7 +45,7 @@ public class EchoBean {
             em.persist(p2);
             em.getTransaction().commit();
      
-            final List<Person> list = em.createQuery("select p from Person p")
+            final List<Person> list = em.createQuery("select p from person p")
                     .getResultList();
      
 

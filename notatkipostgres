@@ -27,3 +27,6 @@ http://www.coderanch.com/t/487173/ORM/java/hibernate-sequence-does-not-exist
 #to juz rozwiazane samo tworzy hibernate_squence 
 
 jezeli polaczenie z baza nie dziala i wypluwa wyjatek Unknown entity konieczne jest dodanie <class>entity.Person</class> w persistence.xml
+
+
+W RAZIE PROBLEMOW ZE STEROWNIAKMI	DO BAZY DANYCH TTRZEBA WRZUCIC JE DO FOLDERU LIB I RESTARTOWAC JBOSS

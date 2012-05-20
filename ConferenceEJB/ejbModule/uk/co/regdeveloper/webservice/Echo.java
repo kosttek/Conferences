@@ -2,7 +2,6 @@ package uk.co.regdeveloper.webservice;
 
 import java.rmi.Remote;
 
-import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
