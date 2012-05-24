@@ -33,6 +33,7 @@ public class PersonTest {
     private EntityManager em;
     
 // kika tu byla fuck yea :D
+    //proba2
     
     @Before
     public void initEmfAndEm() {
