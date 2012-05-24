@@ -31,7 +31,9 @@ public class PersonTest {
     
     private EntityManagerFactory emf;
     private EntityManager em;
- 
+    
+// kika tu byla fuck yea :D
+    
     @Before
     public void initEmfAndEm() {
         BasicConfigurator.configure();
