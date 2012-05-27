@@ -9,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "schedule")
 public class Schedule {
@@ -20,16 +20,16 @@ public class Schedule {
 	private Date startDate;
 	@Column( name = "end_date", nullable = false)
 	private Date endDate;
-	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="presentation_id")
 	private Presentation presentation;
-	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="panel_id")
 	private Panel panel;
-	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="Conference_id")
 	private Conference conference;
-	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="boardroom_id")
 	private Boardroom boardroom;
 	

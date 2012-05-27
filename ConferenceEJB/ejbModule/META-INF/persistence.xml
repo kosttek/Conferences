@@ -16,6 +16,7 @@
       <property name="hibernate.connection.username" value="kosttek"/>
       <property name="hibernate.connection.password" value="PoqZg3vH"/>
       <property name="hibernate.connection.url" value="jdbc:mysql://mysql.agh.edu.pl:3306/kosttek"/>
+<!--       <property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/kosttek"/> -->
       <property name="hibernate.max_fetch_depth" value="3"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
 <!--  <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->

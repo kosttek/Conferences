@@ -1,6 +1,7 @@
 package test;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -69,10 +70,10 @@ public class putDataToDB {
 		
 		Speaker p1 = new Speaker("Mariusz", "Milczynski", "madry facet");
 		Speaker p2 = new Speaker("Robert", "Pawlowski", " karzel ");
-		Speaker p3 = new Speaker("Kasia", "Mirosz", " pogodna blondynka ");
+		//Speaker p3 = new Speaker("Kasia", "Mirosz", " pogodna blondynka ");
 		Presentation c1pr1 = new Presentation("pikaczu", "analiza przyjazni asha i pika", p1);
 		Presentation c1pr2 = new Presentation("KONG KING", "paralaksa marksizmu", p2);
-		Presentation c1pr3 = new Presentation("typy niebytu", "Migracja jednostek", p3);
+		Presentation c1pr3 = new Presentation("typy niebytu", "Migracja jednostek", p2);
 	
 		Speaker p4 = new Speaker("Maria", "Antonina", " sexowna brunetka ");
 		Presentation c2pr1 = new Presentation("Wino a potencja", "Praktyczne porady dla zon alkoholikow", p4);
@@ -87,6 +88,13 @@ public class putDataToDB {
 		em.persist(c1s3);
 		em.persist(c2s1);
 		em.getTransaction().commit();
+		
+//		List<Schedule> resultList= null;
+//		em.getTransaction().begin();
+//		resultList = em.createQuery("from schedule where conference = 2")
+//				.getResultList();
+//		System.out.println("---Conferneces size:" + resultList.size());
+		
 	}
 
 }
