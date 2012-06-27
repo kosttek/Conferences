@@ -13,12 +13,12 @@
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
       <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.connection.username" value="kosttek"/>
-      <property name="hibernate.connection.password" value="PoqZg3vH"/>
-      <property name="hibernate.connection.url" value="jdbc:mysql://mysql.agh.edu.pl:3306/kosttek"/>
+      <property name="hibernate.connection.username" value="pepcok"/>
+      <property name="hibernate.connection.password" value="sydP4JSJ"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://mysql.agh.edu.pl:3306/pepcok"/>
       <property name="hibernate.max_fetch_depth" value="3"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
-<!--  <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->
+<!--       <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+ <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
     </properties>
   </persistence-unit>
 </persistence>
