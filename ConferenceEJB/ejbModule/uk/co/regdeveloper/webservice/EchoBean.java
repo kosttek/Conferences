@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.apache.log4j.BasicConfigurator;
+
 
 import test.Person;
 
@@ -36,7 +36,7 @@ public class EchoBean {
                     "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
             Person p2 = new Person("FirstName"+new Random().nextInt(), 'K', "LastName",
                     "Street1", "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
-            BasicConfigurator.configure();
+
      
             emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
             em = emf.createEntityManager();

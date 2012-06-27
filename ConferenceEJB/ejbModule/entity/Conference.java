@@ -70,4 +70,8 @@ public class Conference implements Serializable{
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	public String toString() {
+		return "Description: "+description+" title: "+title + "id: " + id +"StartDate: "+startDate.toString()+" EndDate "+endDate.toString();
+	}
 }
