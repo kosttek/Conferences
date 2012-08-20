@@ -95,4 +95,10 @@ public class Schedule {
 	public void setBoardroom(Boardroom boardroom) {
 		this.boardroom = boardroom;
 	}
+	
+	public int getId() {
+		return this.id;
+	}
 }
+
+
