@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/pl/edu/kosttek/webservice/Conference.java=UTF-8
+encoding//src/pl/edu/kosttek/webservice/GetConferences.java=UTF-8
+encoding//src/pl/edu/kosttek/webservice/GetConferencesBeanService.java=UTF-8
+encoding//src/pl/edu/kosttek/webservice/GetConferencesBeanServiceLocator.java=UTF-8
+encoding//src/pl/edu/kosttek/webservice/GetConferencesBeanServiceSoapBindingStub.java=UTF-8
