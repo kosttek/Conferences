@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
 
 import org.apache.log4j.BasicConfigurator;
 
+
 import test.Person;
 
 import entity.Conference;
@@ -45,7 +46,7 @@ public class GetConferencesBean {
                 "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
         Person p2 = new Person("FirstName"+new Random().nextInt(), 'K', "LastName",
                 "Street1", "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
-        BasicConfigurator.configure();
+
  
         emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
         em = emf.createEntityManager();

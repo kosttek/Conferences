@@ -1,21 +1,15 @@
 package test;
  
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
- 
-import java.sql.Date;
+
 import java.util.List;
- 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
- 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import entity.Presentation;
@@ -37,8 +31,7 @@ public class PersonTest {
     
     @Before
     public void initEmfAndEm() {
-        BasicConfigurator.configure();
-        Logger.getLogger("org").setLevel(Level.ERROR);
+
  //"person.odb" on local 
         emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
         em = emf.createEntityManager();

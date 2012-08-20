@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.apache.log4j.BasicConfigurator;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class putDataToDB {
 
 	@Before
 	public void initEmfAndEm() {
-		BasicConfigurator.configure();
+
 		emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
 		em = emf.createEntityManager();
 	}
