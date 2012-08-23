@@ -1,6 +1,9 @@
 package pl.edu.kosttek.webservice;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -11,19 +14,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.apache.log4j.BasicConfigurator;
-
-
 import test.Person;
-
 import entity.Conference;
 
 @Stateless
 @WebService(endpointInterface = "pl.edu.kosttek.webservice.GetConferences")
 @Remote(GetConferences.class)
 public class GetConferencesBean {
-	private EntityManagerFactory emf;
-	private EntityManager em;
+	private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+	private EntityManager entityManager= entityManagerFactory.createEntityManager();;
 
 	public String echoTest() {
 		return "Test : "+dbtest();
@@ -32,15 +31,16 @@ public class GetConferencesBean {
 	public List<Conference> getConferences() {
 		final List<Conference> resultList ;
 
-		emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
-		em = emf.createEntityManager();
-		em.getTransaction().begin();
-		resultList = em.createQuery("select c from conference c")
+//		entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+//		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		resultList = entityManager.createQuery("select c from conference c")
 				.getResultList();
 		System.out.println("---Conferneces size:" + resultList.size());
-		em.close();
+		entityManager.close();
 		return resultList;
 	}
+	
 	private String dbtest(){
         Person p1 = new Person("Brett", 'L', "Schuchert", "Street1",
                 "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
@@ -48,14 +48,14 @@ public class GetConferencesBean {
                 "Street1", "Street2", "City", "State", "Zip",new Date(System.currentTimeMillis()));
 
  
-        emf = Persistence.createEntityManagerFactory("examplePersistenceUnit");
-        em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(p1);
-        em.persist(p2);
-        em.getTransaction().commit();
+        entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+        entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(p1);
+        entityManager.persist(p2);
+        entityManager.getTransaction().commit();
  
-        final List<Person> list = em.createQuery("select p from person p")
+        final List<Person> list = entityManager.createQuery("select p from person p")
                 .getResultList();
  
 
@@ -65,4 +65,40 @@ public class GetConferencesBean {
         }
         return "Noname";
     }
+	
+	public String putConferenceToDB(String title, String description,
+			String startingDate, String endingDate) {
+//		entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+//		entityManager = entityManagerFactory.createEntityManager();
+        DateFormat formatter;
+        java.util.Date startDate = new java.util.Date();
+        java.util.Date endDate = new java.util.Date();
+        formatter = new SimpleDateFormat("d-M-y");//01-01-2001
+        try {
+        	startDate = (java.util.Date) formatter.parse(startingDate);
+			endDate = (java.util.Date) formatter.parse(endingDate);
+		} catch (ParseException e) {
+			System.out.println("Exception in parsing date :"+e);  
+			e.printStackTrace();
+		}
+		
+        Conference conference = new Conference();
+        conference.setTitle(title);
+        conference.setDescription(description);
+        conference.setStartDate(startDate);
+        conference.setEndDate(endDate);
+        
+        try {
+        	entityManager.getTransaction().begin();
+        	entityManager.persist(conference);
+        	entityManager.getTransaction().commit();
+        	System.out.println("Added successfully with id " + conference.getId());
+			
+		} catch (Exception e) {
+			System.err.println("Error occured");
+			e.printStackTrace();
+		}
+        
+        return "Added successfully with id " + conference.getId();
+	}
 }

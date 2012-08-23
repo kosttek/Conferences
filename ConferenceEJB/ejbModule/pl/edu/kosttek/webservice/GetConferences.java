@@ -14,4 +14,5 @@ import entity.Conference;
 public interface GetConferences extends Remote{
 	public String echoTest();
 	public List<Conference> getConferences();
+	public String putConferenceToDB(String title, String description, String starDate, String endDate);
 }
