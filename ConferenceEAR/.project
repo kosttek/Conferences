@@ -4,6 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>ConferenceEJB</project>
+		<project>jsf-blank</project>
+		<project>basics</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

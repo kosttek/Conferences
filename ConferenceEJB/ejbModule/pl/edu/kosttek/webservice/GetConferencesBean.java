@@ -33,12 +33,31 @@ public class GetConferencesBean {
 
 //		entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
 //		entityManager = entityManagerFactory.createEntityManager();
-		entityManager.getTransaction().begin();
+		if(!entityManager.getTransaction().isActive())
+			entityManager.getTransaction().begin();
+		else
+			entityManager.getTransaction();
 		resultList = entityManager.createQuery("select c from conference c")
 				.getResultList();
+
 		System.out.println("---Conferneces size:" + resultList.size());
-		entityManager.close();
+
+		
 		return resultList;
+	}
+	
+	public String removeConference(String id){
+		Conference conference;
+		if(!entityManager.getTransaction().isActive())
+			entityManager.getTransaction().begin();
+		else
+			entityManager.getTransaction();
+		conference =(Conference) entityManager.createQuery("select c from conference c where id="+ id)
+				.getSingleResult();
+		entityManager.remove(conference);
+
+		
+		return id;
 	}
 	
 	private String dbtest(){
@@ -89,10 +108,15 @@ public class GetConferencesBean {
         conference.setEndDate(endDate);
         
         try {
-        	entityManager.getTransaction().begin();
+    		if(!entityManager.getTransaction().isActive())
+    			entityManager.getTransaction().begin();
+    		else
+    			entityManager.getTransaction();
+    		
         	entityManager.persist(conference);
         	entityManager.getTransaction().commit();
         	System.out.println("Added successfully with id " + conference.getId());
+
 			
 		} catch (Exception e) {
 			System.err.println("Error occured");
